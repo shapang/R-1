@@ -13,9 +13,17 @@ clinical.trial <-
                treatment = gl(2, 50,
                  labels = c("Treatment", "Control")),
                center = sample(paste("Center", LETTERS[1:5]), 100, replace = TRUE)) 
+#paste function (Concatenate vectors after converting to character) sep = a character string to separate the terms. 
+#sample function (sample takes a sample of the specified size from the elements of x using either with or without replacement)
+#sample(x, size, replace = FALSE, prob = NULL)
+#gl function(Generate factors by specifying the pattern of their levels.)
+#gl(n, k, length = n*k, labels = seq_len(n), ordered = FALSE)
+
 ## set some ages to NA (missing) 
 is.na(clinical.trial$age) <- sample(1:100, 20)
 summary(clinical.trial)
+
+#is.na function (the generic function is.na indicates which elements are missing.)
 
 ## a simple example of a table call 
 table(clinical.trial$center)
@@ -43,7 +51,7 @@ sort(table(clinical.trial$center, is.na(clinical.trial$age))[, 2],
        decreasing = TRUE)
 #Center A Center C Center E Center D Center B 
 #       6        5        4        3        2  
-
+#sort(x, decreasing = FALSE, na.last = NA, ...)
 
 c1 <- cut(clinical.trial$age, breaks = seq(30, 80, by = 10))
 table(c1)
